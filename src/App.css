@@ -1,0 +1,2944 @@
+.app {
+  width: 100%;
+  /* Fondo romántico tipo papel de carta amarillento */
+  background: linear-gradient(
+    135deg,
+    #fff8e7 0%,
+    #fdf5e6 25%,
+    #fff5e1 50%,
+    #fdf5e6 75%,
+    #fff8e7 100%
+  );
+
+  /* Textura de papel sutil */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 180, 140, 0.03) 2px,
+      rgba(210, 180, 140, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 180, 140, 0.03) 2px,
+      rgba(210, 180, 140, 0.03) 4px
+    );
+}
+
+.heart-click-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.heart-particle {
+  --drift-x: 0px;
+  --duration: 1000ms;
+  --delay: 0ms;
+  position: fixed;
+  display: block;
+  background: transparent;
+  animation: heartFloat var(--duration) ease-out forwards;
+  animation-delay: var(--delay);
+  opacity: 0;
+}
+
+.heart-particle::before {
+  content: "♥";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: inherit;
+  line-height: 1;
+  color: #ff4d6d;
+  text-shadow: 0 0 12px rgba(255, 77, 109, 0.25);
+}
+
+@keyframes heartFloat {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  15% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--drift-x)), calc(-50% - 70px))
+      scale(1.4);
+  }
+}
+
+.scroll-container {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagen principal - Tamaño completo de pantalla */
+.main-image {
+  position: absolute;
+  width: 95vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow:
+    0 10px 40px rgba(139, 90, 43, 0.3),
+    inset 0 0 0 2px rgba(210, 180, 140, 0.4);
+  will-change: transform;
+}
+
+.main-image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.fin-section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagen principal - Tamaño completo de pantalla */
+.fin-image {
+  position: absolute;
+  width: 95vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow:
+    0 10px 40px rgba(139, 90, 43, 0.3),
+    inset 0 0 0 2px rgba(210, 180, 140, 0.4);
+  will-change: transform;
+}
+
+.fin-image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0% 50%;
+}
+
+.fin-scroll-container {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Responsive para tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .main-image {
+    width: 92vw;
+    height: 92vh;
+  }
+
+  .fin-image {
+    width: 92vw;
+    height: 92vh;
+  }
+
+  .image-overlay h1 {
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    letter-spacing: 3px;
+  }
+
+  .final-text-overlay h1 {
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    letter-spacing: 3px;
+  }
+
+  /* Cuadros decorativos ajustados para tablet */
+  .box-1 {
+    width: 140px;
+    height: 140px;
+    top: 12%;
+    left: 10%;
+  }
+
+  .box-2 {
+    width: 95px;
+    height: 180px;
+    top: 22%;
+    right: 7%;
+  }
+
+  .box-3 {
+    width: 120px;
+    height: 120px;
+    bottom: 18%;
+    left: 8%;
+  }
+
+  .box-4 {
+    width: 160px;
+    height: 100px;
+    top: 38%;
+    right: 12%;
+  }
+
+  .box-5 {
+    width: 85px;
+    height: 85px;
+    bottom: 28%;
+    right: 18%;
+  }
+
+  .box-6 {
+    width: 130px;
+    height: 150px;
+    top: 8%;
+    right: 22%;
+  }
+
+  .content-section {
+    padding: 50px 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fin-image {
+    position: absolute;
+    width: 95vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 10px;
+    will-change: transform;
+  }
+  .fin-image img {
+    border-radius: 10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0% 40%;
+  }
+
+  .fin-scroll-container {
+    margin-bottom: 50px;
+    height: 40vh;
+    position: relative;
+  }
+
+  .fin-section {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.image-overlay {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  padding: 0;
+  margin-top: 50vh;
+}
+
+.image-overlay h1 {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(4rem, 10vw, 8rem);
+  color: #ffffff;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.5),
+    -1px -1px 2px rgba(255, 255, 255, 0.3);
+}
+/* Overlay de texto para la sección final */
+.final-text-overlay {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  padding: 0;
+}
+
+.final-text-overlay h1 {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(4rem, 10vw, 8rem);
+  color: #ffffff;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.5),
+    -1px -1px 2px rgba(255, 255, 255, 0.3);
+}
+
+
+/* Cuadros decorativos */
+.decorative-box {
+  position: absolute;
+  z-index: 3;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  will-change: transform, opacity;
+}
+
+/* Cuadro 1 - Rosa suave (más grande) */
+.box-1 {
+  width: 160px;
+  height: 160px;
+  background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 100%);
+  top: 15%;
+  left: 12%;
+}
+
+/* Cuadro 2 - Dorado (más grande) */
+.box-2 {
+  width: 110px;
+  height: 210px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
+  top: 25%;
+  right: 8%;
+}
+
+/* Cuadro 3 - Lavanda (más grande, sin círculo) */
+.box-3 {
+  width: 140px;
+  height: 140px;
+  background: linear-gradient(135deg, #e6e6fa 0%, #dda0dd 100%);
+  bottom: 20%;
+  left: 10%;
+}
+
+/* Cuadro 4 - Melocotón (más grande) */
+.box-4 {
+  width: 190px;
+  height: 120px;
+  background: linear-gradient(135deg, #ffdab9 0%, #ffb347 100%);
+  top: 40%;
+  right: 15%;
+}
+
+/* Cuadro 5 - Menta suave (más grande, sin círculo) */
+.box-5 {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #98ff98 0%, #90ee90 100%);
+  bottom: 30%;
+  right: 20%;
+}
+
+/* Cuadro 6 - Coral (más grande) */
+.box-6 {
+  width: 150px;
+  height: 170px;
+  background: linear-gradient(135deg, #ff7f50 0%, #ff6347 100%);
+  top: 10%;
+  right: 25%;
+}
+
+/* Sección de invitación */
+.invitation-section {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+.invitation-content {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.invitation-text {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: #4f4c4c;
+  line-height: 1.8;
+  margin: 0;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(139, 90, 43, 0.1);
+  opacity: 1;
+  will-change: opacity, transform;
+}
+
+.span-invitation-text {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(2.4rem, 6vw,4rem);
+  color: #4f4c4c;
+  /* color: #8b5a2b; */
+  line-height: 1.8;
+  margin: 0;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(139, 90, 43, 0.1);
+  opacity: 1;
+  will-change: opacity, transform;
+}
+
+/* Sección de Padres y Padrinos */
+.parents-section {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+.parents-content {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.parents-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  color: #4f4c4c;
+  margin: 0 0 50px 0;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(139, 90, 43, 0.15);
+}
+
+.parents-group {
+  margin-bottom: 44px;
+}
+
+.parents-group:last-child {
+  margin-bottom: 0;
+}
+
+.parents-group-title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  color: #4f4c4c;
+  margin: 0 0 24px 0;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.parents-columns {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.parents-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.parents-divider {
+  width: 1px;
+  align-self: stretch;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(139, 90, 43, 0.4),
+    transparent
+  );
+}
+
+.parents-side {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+  color: #4f4c4c;
+  margin: 0 0 12px 0;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.parents-name {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  color: #4f4c4c;
+  margin: 4px 0;
+  font-style: italic;
+  line-height: 1.6;
+  /* Bloque de altura fija (≈2 líneas) para alinear ambas columnas */
+  min-height: 3.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.parents-cross {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  color: #4f4c4c;
+  font-size: 0.85em;
+  vertical-align: middle;
+  opacity: 0.85;
+}
+
+/* Responsive para tablets - Padres y Padrinos */
+@media (max-width: 768px) {
+  .parents-section {
+    padding: 60px 16px;
+  }
+
+  .parents-title {
+    margin-bottom: 36px;
+  }
+
+  .parents-group {
+    margin-bottom: 36px;
+  }
+
+  .parents-group-title {
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+  }
+
+  .parents-columns {
+    gap: 20px;
+  }
+}
+
+/* Responsive para teléfonos - Padres y Padrinos */
+@media (max-width: 480px) {
+  .parents-section {
+    padding: 48px 12px;
+  }
+
+  .parents-title {
+    margin-bottom: 28px;
+  }
+
+  .parents-group {
+    margin-bottom: 30px;
+  }
+
+  .parents-group-title {
+    margin-bottom: 14px;
+    letter-spacing: 1.5px;
+  }
+
+  .parents-columns {
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .parents-column {
+    padding: 0 4px;
+  }
+
+  .parents-side {
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    word-break: break-word;
+  }
+
+  .parents-name {
+    margin: 3px 0;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+}
+
+/* Contenido adicional para continuar el scroll */
+.additional-content {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.content-section {
+  max-width: 800px;
+  width: 100%;
+  padding: 60px 40px;
+  background: rgba(255, 253, 250, 0.95);
+  border-radius: 4px;
+  box-shadow:
+    0 8px 20px rgba(139, 90, 43, 0.15),
+    inset 0 0 0 1px rgba(210, 180, 140, 0.3);
+  text-align: center;
+}
+
+.content-section h2 {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #8b5a2b;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+  letter-spacing: 3px;
+}
+
+.content-section p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: #6b4423;
+  line-height: 1.8;
+}
+
+/* Sección de historia de amor */
+.love-story-section {
+  min-height: 450vh;
+  position: relative;
+  padding: 80px 20px 300px 20px;
+}
+
+.love-story-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: #4f4c4c;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(139, 90, 43, 0.15);
+  z-index: 100;
+  padding: 30px 20px;
+  /* Fondo sólido para que nada pase por detrás */
+}
+
+/* Contenedor para el stack de polaroids */
+.polaroid-stack-container {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.polaroid-stack {
+  position: relative;
+  width: 100%;
+  max-width: 750px;
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.polaroid-stack-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+  will-change: transform, opacity;
+  pointer-events: auto;
+}
+
+/* Posiciones desordenadas como montañita - Desktop (patrón que se repite) */
+.polaroid-stack-item:nth-child(10n + 1) {
+  transform: translate(-50%, -50%) rotate(-8deg) translate(-50px, 35px);
+}
+
+.polaroid-stack-item:nth-child(10n + 2) {
+  transform: translate(-50%, -50%) rotate(5deg) translate(60px, -20px);
+}
+
+.polaroid-stack-item:nth-child(10n + 3) {
+  transform: translate(-50%, -50%) rotate(-2deg) translate(-8px, 0px);
+}
+
+.polaroid-stack-item:nth-child(10n + 4) {
+  transform: translate(-50%, -50%) rotate(7deg) translate(45px, 25px);
+}
+
+.polaroid-stack-item:nth-child(10n + 5) {
+  transform: translate(-50%, -50%) rotate(-6deg) translate(-40px, -25px);
+}
+
+.polaroid-stack-item:nth-child(10n + 6) {
+  transform: translate(-50%, -50%) rotate(4deg) translate(55px, 10px);
+}
+
+.polaroid-stack-item:nth-child(10n + 7) {
+  transform: translate(-50%, -50%) rotate(-7deg) translate(-45px, -10px);
+}
+
+.polaroid-stack-item:nth-child(10n + 8) {
+  transform: translate(-50%, -50%) rotate(6deg) translate(30px, -25px);
+}
+
+.polaroid-stack-item:nth-child(10n + 9) {
+  transform: translate(-50%, -50%) rotate(-4deg) translate(-35px, 20px);
+}
+
+.polaroid-stack-item:nth-child(10n + 10) {
+  transform: translate(-50%, -50%) rotate(3deg) translate(40px, 30px);
+}
+
+.polaroid-stack-item:hover {
+  filter: brightness(1.05);
+  z-index: 100;
+}
+
+/* Modal para imagen ampliada */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  cursor: default;
+  animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  background: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 30px;
+  cursor: pointer;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close:hover {
+  background: #f0f0f0;
+}
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .polaroid-stack {
+    max-width: 450px;
+    height: 400px;
+  }
+
+  .polaroid-stack-container {
+    top: 38%;
+  }
+
+  /* Ajustar posiciones para tablet */
+  .polaroid-stack-item:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(-8deg) translate(-35px, 25px);
+  }
+
+  .polaroid-stack-item:nth-child(2) {
+    transform: translate(-50%, -50%) rotate(5deg) translate(45px, -12px);
+  }
+
+  .polaroid-stack-item:nth-child(3) {
+    transform: translate(-50%, -50%) rotate(-2deg) translate(-3px, 0px);
+  }
+
+  .polaroid-stack-item:nth-child(4) {
+    transform: translate(-50%, -50%) rotate(7deg) translate(30px, 18px);
+  }
+
+  .polaroid-stack-item:nth-child(5) {
+    transform: translate(-50%, -50%) rotate(-6deg) translate(-25px, -18px);
+  }
+}
+
+/* Móviles (hasta 768px) */
+@media (max-width: 768px) {
+  .love-story-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    padding: 20px 15px;
+    letter-spacing: 1px;
+  }
+
+  .polaroid-stack {
+    max-width: 280px;
+    height: 320px;
+  }
+
+  .polaroid-stack-container {
+    top: 35%;
+  }
+
+  .modal-close {
+    top: 10px;
+    right: 10px;
+  }
+
+  .love-story-section {
+    min-height: 400vh;
+    padding: 80px 20px 250px 20px;
+  }
+
+  /* Ajustar posiciones para móvil - más compactas */
+  .polaroid-stack-item:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(-8deg) translate(-20px, 18px);
+  }
+
+  .polaroid-stack-item:nth-child(2) {
+    transform: translate(-50%, -50%) rotate(5deg) translate(25px, -8px);
+  }
+
+  .polaroid-stack-item:nth-child(3) {
+    transform: translate(-50%, -50%) rotate(-2deg) translate(-15px, -10px);
+  }
+
+  .polaroid-stack-item:nth-child(4) {
+    transform: translate(-50%, -50%) rotate(7deg) translate(18px, 12px);
+  }
+
+  .polaroid-stack-item:nth-child(5) {
+    transform: translate(-50%, -50%) rotate(-6deg) translate(-18px, -12px);
+  }
+
+  .polaroid-stack-item:hover {
+    filter: brightness(1.05);
+  }
+}
+
+/* Móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+  .love-story-title {
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    padding: 15px 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .polaroid-stack {
+    max-width: 240px;
+    height: 280px;
+  }
+
+  .polaroid-stack-container {
+    top: 33%;
+  }
+
+  /* Posiciones aún más compactas para móviles pequeños */
+  .polaroid-stack-item:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(-8deg) translate(-15px, 15px);
+  }
+
+  .polaroid-stack-item:nth-child(2) {
+    transform: translate(-50%, -50%) rotate(5deg) translate(20px, -6px);
+  }
+
+  .polaroid-stack-item:nth-child(3) {
+    transform: translate(-50%, -50%) rotate(-2deg) translate(0px, 0px);
+  }
+
+  .polaroid-stack-item:nth-child(4) {
+    transform: translate(-50%, -50%) rotate(7deg) translate(15px, 10px);
+  }
+
+  .polaroid-stack-item:nth-child(5) {
+    transform: translate(-50%, -50%) rotate(-6deg) translate(-15px, -10px);
+  }
+}
+
+/* Responsive para móviles - Optimizado para rendimiento */
+@media (max-width: 768px) {
+  /* Ocultar cuadros decorativos en móvil */
+  .decorative-box {
+    display: none;
+  }
+
+  .box-1 {
+    top: 10%;
+    left: 5%;
+  }
+
+  .box-2 {
+    top: 15%;
+    right: 5%;
+  }
+
+  .box-3 {
+    bottom: 15%;
+    left: 5%;
+  }
+
+  .box-4 {
+    top: 35%;
+    right: 8%;
+  }
+
+  .box-5 {
+    bottom: 25%;
+    right: 10%;
+  }
+
+  .box-6 {
+    top: 8%;
+    right: 18%;
+  }
+
+  .image-overlay h1 {
+    font-size: clamp(3rem, 12vw, 6rem);
+    letter-spacing: 2px;
+  }
+
+  .final-text-overlay {
+    justify-content: flex-end;
+    padding-top: 9rem;
+  }
+
+  .final-text-overlay h1 {
+    font-size: clamp(3rem, 12vw, 6rem);
+    letter-spacing: 2px;
+  }
+
+  .content-section {
+    padding: 40px 30px;
+  }
+}
+
+/* Sección de invitación con countdown */
+.invitation-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background: linear-gradient(
+    135deg,
+    #fff8e7 0%,
+    #fdf5e6 25%,
+    #fff5e1 50%,
+    #fdf5e6 75%,
+    #fff8e7 100%
+  );
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 180, 140, 0.03) 2px,
+      rgba(210, 180, 140, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 180, 140, 0.03) 2px,
+      rgba(210, 180, 140, 0.03) 4px
+    );
+}
+
+.invitation-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.invitation-text {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: #4f4c4c;
+  margin-bottom: 30px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+
+.wedding-date {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: #4f4c4c;
+  margin: 40px 0;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  margin-top: 50px;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+}
+
+.countdown-number {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(2rem, 6vw, 5rem);
+  color: #4f4c4c;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.countdown-label {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  color: #4f4c4c;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+/* Responsive para tablets - Countdown */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .invitation-section {
+    padding: 70px 20px;
+  }
+
+  .countdown-container {
+    gap: 25px;
+  }
+
+  .countdown-item {
+    min-width: 90px;
+  }
+
+  .countdown-number {
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  }
+
+  .countdown-label {
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .invitation-section {
+    padding: 60px 20px;
+  }
+
+  .countdown-container {
+    gap: 15px;
+    flex-wrap: nowrap;
+  }
+
+  .countdown-item {
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .invitation-section {
+    padding: 40px 15px;
+  }
+
+  .countdown-container {
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  .countdown-item {
+    min-width: 60px;
+  }
+}
+
+/* Sección de Ceremonia */
+.ceremony-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.ceremony-content {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.ceremony-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: #4f4c4c;
+  margin-bottom: 10px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.ceremony-name {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: #4f4c4c;
+  margin-bottom: 25px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.ceremony-image-container {
+  width: 100%;
+  max-width: 700px;
+  max-height: 40vh;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.ceremony-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.ceremony-address {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(0.95rem, 2vw, 1.3rem);
+  color: #4f4c4c;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.ceremony-time {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #4f4c4c;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.ceremony-map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.ceremony-map-container:hover {
+  transform: scale(1.05);
+}
+
+.map-icon {
+  width: 70px;
+  height: 70px;
+  color: #8b5a2b;
+}
+
+.map-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.map-text {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  color: #4f4c4c;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Responsive para tablets - Ceremony */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .ceremony-section {
+    padding: 35px 20px;
+  }
+
+  .ceremony-title {
+    font-size: clamp(2.2rem, 6.5vw, 4rem);
+    margin-bottom: 9px;
+  }
+
+  .ceremony-name {
+    font-size: clamp(0.9rem, 1.9vw, 1.3rem);
+    margin-bottom: 20px;
+    letter-spacing: 4px;
+  }
+
+  .ceremony-image-container {
+    max-height: 38vh;
+    border-radius: 10px;
+    margin-bottom: 18px;
+  }
+
+  .ceremony-address {
+    font-size: clamp(0.9rem, 1.9vw, 1.2rem);
+    margin-bottom: 13px;
+  }
+
+  .ceremony-time {
+    font-size: clamp(1.6rem, 3.8vw, 2.5rem);
+    margin-bottom: 18px;
+  }
+
+  .map-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .map-text {
+    font-size: clamp(0.8rem, 1.7vw, 0.95rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .ceremony-section {
+    padding: 30px 15px;
+  }
+
+  .ceremony-title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: 8px;
+  }
+
+  .ceremony-name {
+    font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+  }
+
+  .ceremony-image-container {
+    max-height: 35vh;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+
+  .ceremony-address {
+    font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+    margin-bottom: 12px;
+  }
+
+  .ceremony-time {
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    margin-bottom: 15px;
+  }
+
+  .map-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .map-text {
+    font-size: clamp(0.75rem, 1.6vw, 0.9rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .ceremony-section {
+    padding: 20px 10px;
+  }
+
+  .ceremony-title {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+    margin-bottom: 5px;
+  }
+
+  .ceremony-name {
+    font-size: clamp(0.75rem, 1.6vw, 1rem);
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+
+  .ceremony-image-container {
+    max-height: 30vh;
+    margin-bottom: 12px;
+  }
+
+  .ceremony-address {
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
+    margin-bottom: 10px;
+  }
+
+  .ceremony-time {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    margin-bottom: 12px;
+  }
+
+  .map-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .map-text {
+    font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+  }
+}
+
+/* Sección de Itinerario */
+.itinerary-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background: linear-gradient(
+    135deg,
+    #fff8e7 0%,
+    #fdf5e6 25%,
+    #fff5e1 50%,
+    #fdf5e6 75%,
+    #fff8e7 100%
+  );
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 180, 140, 0.03) 2px,
+      rgba(210, 180, 140, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 180, 140, 0.03) 2px,
+      rgba(210, 180, 140, 0.03) 4px
+    );
+}
+
+.itinerary-content {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.itinerary-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: #4f4c4c;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.itinerary-timeline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 1100px;
+  position: relative;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.timeline-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #fff8e7;
+  border: 3px solid #4f4c4c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(139, 90, 43, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.icon-svg {
+  width: 40px;
+  height: 40px;
+  color: #4f4c4c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-svg svg {
+  width: 100%;
+  height: 100%;
+}
+
+.timeline-connector {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  width: 100%;
+  height: 3px;
+  background: #4f4c4c;
+  z-index: 1;
+}
+
+.timeline-item:last-child .timeline-connector {
+  display: none;
+}
+
+.timeline-content {
+  text-align: center;
+  padding: 0 10px;
+}
+
+.timeline-time {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  color: #4f4c4c;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.5px;
+}
+
+.timeline-title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: #4f4c4c;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+.timeline-description {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  color: #4f4c4c;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Responsive para tablets - Itinerary */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .itinerary-section {
+    padding: 70px 20px;
+  }
+
+  .itinerary-content {
+    gap: 45px;
+  }
+
+  .itinerary-title {
+    font-size: clamp(2.2rem, 6.5vw, 4rem);
+  }
+
+  .itinerary-timeline {
+    max-width: 950px;
+  }
+
+  .timeline-item {
+    min-width: 180px;
+  }
+
+  .timeline-icon {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 18px;
+  }
+
+  .icon-svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .timeline-time {
+    font-size: clamp(1.15rem, 2.3vw, 1.6rem);
+  }
+
+  .timeline-title {
+    font-size: clamp(0.98rem, 1.9vw, 1.25rem);
+  }
+
+  .timeline-description {
+    font-size: clamp(0.88rem, 1.6vw, 1.05rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .itinerary-section {
+    padding: 60px 20px;
+  }
+
+  .itinerary-content {
+    gap: 40px;
+  }
+
+  .itinerary-title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+  }
+
+  .itinerary-timeline {
+    flex-direction: column;
+    gap: 0;
+    max-width: 400px;
+    position: relative;
+    padding-left: 40px;
+  }
+
+  /* Línea vertical continua detrás de todos los elementos */
+  .itinerary-timeline::before {
+    content: "";
+    position: absolute;
+    left: 75px;
+    top: 35px;
+    bottom: 35px;
+    width: 3px;
+    background: #8b5a2b;
+    z-index: 0;
+  }
+
+  .timeline-item {
+    flex-direction: row;
+    width: 100%;
+    min-width: unset;
+    padding: 20px 0;
+    position: relative;
+  }
+
+  .timeline-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 0;
+    margin-right: 20px;
+    flex-shrink: 0;
+    z-index: 2;
+  }
+
+  .icon-svg {
+    width: 35px;
+    height: 35px;
+  }
+
+  .timeline-connector {
+    display: none;
+  }
+
+  .timeline-content {
+    text-align: left;
+    padding: 0;
+    flex: 1;
+  }
+
+  .timeline-time {
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  }
+
+  .timeline-title {
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  }
+
+  .timeline-description {
+    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+  .itinerary-section {
+    padding: 40px 15px;
+  }
+
+  .itinerary-content {
+    gap: 30px;
+  }
+
+  .itinerary-title {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+  }
+
+  .itinerary-timeline {
+    gap: 0;
+    max-width: 100%;
+    padding-left: 50px;
+  }
+
+  /* Línea vertical continua para móvil */
+  .itinerary-timeline::before {
+    left: 80px;
+    top: 30px;
+    bottom: 30px;
+  }
+
+  .timeline-item {
+    padding: 15px 0;
+  }
+
+  .timeline-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+  }
+
+  .icon-svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .timeline-time {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    margin-bottom: 5px;
+  }
+
+  .timeline-title {
+    font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+    margin-bottom: 3px;
+  }
+
+  .timeline-description {
+    font-size: clamp(0.75rem, 1.3vw, 0.9rem);
+  }
+}
+/* Sección de Hoteles */
+.hotels-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background: linear-gradient(
+    135deg,
+    #fff8e7 0%,
+    #fdf5e6 25%,
+    #fff5e1 50%,
+    #fdf5e6 75%,
+    #fff8e7 100%
+  );
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 180, 140, 0.03) 2px,
+      rgba(210, 180, 140, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 180, 140, 0.03) 2px,
+      rgba(210, 180, 140, 0.03) 4px
+    );
+  overflow-x: hidden;
+}
+
+.hotels-content {
+  max-width: 1300px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  overflow-x: hidden;
+}
+
+.hotels-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: #8b5a2b;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.hotels-subtitle {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: #6b4423;
+  margin: 0;
+  max-width: 700px;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.hotels-carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow: visible;
+}
+
+.hotels-carousel {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(139, 90, 43, 0.15);
+  width: 100%;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.hotels-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.hotel-card {
+  min-width: 100%;
+  background: #ffffff;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  border: 2px solid #d4b896;
+  border-radius: 12px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 32px rgba(139, 90, 43, 0.15);
+}
+
+.hotel-icon {
+  width: 60px;
+  height: 60px;
+  color: #8b5a2b;
+  margin-bottom: 10px;
+}
+
+.hotel-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hotel-name {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: #8b5a2b;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.hotel-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.star {
+  font-size: 1.2rem;
+  color: #d4af37;
+}
+
+.full-star {
+  color: #ffd700;
+}
+
+.half-star {
+  background: linear-gradient(90deg, #ffd700 50%, #d4af37 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.empty-star {
+  color: #d4af37;
+  opacity: 0.3;
+}
+
+.rating-number {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.95rem;
+  color: #8b5a2b;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.hotel-address {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: #6b4423;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.hotel-distance {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  color: #8b7355;
+  margin: 0;
+  font-style: italic;
+}
+
+.hotel-phone {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  color: #6b4423;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phone-icon {
+  font-size: 1.2em;
+}
+
+.hotel-maps-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #8b5a2b;
+  color: #fff8e7;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(139, 90, 43, 0.2);
+}
+
+.hotel-maps-button:hover {
+  background: #6b4423;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(139, 90, 43, 0.3);
+}
+
+.maps-icon-svg {
+  width: 20px;
+  height: 20px;
+  color: #fff8e7;
+  flex-shrink: 0;
+}
+
+.carousel-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #8b5a2b;
+  color: #fff8e7;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(139, 90, 43, 0.2);
+  flex-shrink: 0;
+}
+
+.carousel-button:hover {
+  background: #6b4423;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(139, 90, 43, 0.3);
+}
+
+.carousel-button:active {
+  transform: scale(0.95);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #d4b896;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.carousel-dot:hover {
+  background: #c17a4a;
+  transform: scale(1.2);
+}
+
+.carousel-dot.active {
+  background: #8b5a2b;
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* Responsive para tablets - Hotels */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .hotels-section {
+    padding: 70px 20px;
+  }
+
+  .hotels-content {
+    gap: 35px;
+  }
+
+  .hotels-title {
+    font-size: clamp(2.2rem, 6.5vw, 4rem);
+  }
+
+  .hotels-subtitle {
+    font-size: clamp(0.95rem, 2.3vw, 1.35rem);
+  }
+
+  .hotels-carousel-container {
+    max-width: 800px;
+    gap: 18px;
+  }
+
+  .carousel-button {
+    width: 48px;
+    height: 48px;
+    font-size: 1.9rem;
+  }
+
+  .hotel-card {
+    padding: 35px 28px;
+    gap: 14px;
+  }
+
+  .hotel-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .hotel-name {
+    font-size: clamp(1.45rem, 2.8vw, 1.9rem);
+  }
+
+  .hotel-address,
+  .hotel-distance,
+  .hotel-phone {
+    font-size: clamp(0.92rem, 1.7vw, 1.08rem);
+  }
+
+  .hotel-maps-button {
+    padding: 11px 22px;
+    font-size: clamp(0.92rem, 1.7vw, 0.98rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .hotels-section {
+    padding: 60px 15px;
+    overflow-x: hidden;
+  }
+
+  .hotels-content {
+    gap: 30px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hotels-title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+  }
+
+  .hotels-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    padding: 0 10px;
+  }
+
+  .hotels-carousel-container {
+    flex-direction: row;
+    gap: 10px;
+    max-width: 100%;
+    padding: 0 5px;
+    align-items: center;
+  }
+
+  .hotels-carousel {
+    width: 100%;
+    max-width: 100%;
+    flex: 1;
+  }
+
+  .carousel-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+  }
+
+  .hotel-card {
+    padding: 30px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 12px;
+  }
+
+  .hotel-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .hotel-name {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+  }
+
+  .hotel-address,
+  .hotel-distance,
+  .hotel-phone {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+  }
+
+  .hotel-maps-button {
+    padding: 10px 18px;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+  .hotels-section {
+    padding: 40px 5px;
+    overflow-x: hidden;
+  }
+
+  .hotels-content {
+    gap: 25px;
+    max-width: 100%;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .hotels-title {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+    padding: 0 10px;
+  }
+
+  .hotels-subtitle {
+    font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+    padding: 0 15px;
+  }
+
+  .hotels-carousel-container {
+    flex-direction: row;
+    gap: 8px;
+    max-width: 100%;
+    padding: 0;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hotels-carousel {
+    width: 100%;
+    max-width: calc(100% - 90px);
+    flex: 1;
+    margin: 0 5px;
+  }
+
+  .carousel-button {
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    z-index: 10;
+  }
+
+  .hotel-card {
+    padding: 25px 15px;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: auto;
+  }
+
+  .hotel-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+  }
+
+  .hotel-name {
+    font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+    line-height: 1.3;
+  }
+
+  .hotel-address {
+    font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+    line-height: 1.4;
+  }
+
+  .hotel-distance {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+  }
+
+  .hotel-phone {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    gap: 6px;
+  }
+
+  .hotel-maps-button {
+    padding: 9px 16px;
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
+    width: auto;
+    max-width: 100%;
+    margin-top: 5px;
+  }
+
+  .carousel-dots {
+    gap: 8px;
+    margin-top: 5px;
+  }
+
+  .carousel-dot {
+    width: 9px;
+    height: 9px;
+  }
+
+  .carousel-dot.active {
+    width: 24px;
+  }
+}
+
+/* Sección de Dress Code */
+.dress-code-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background: linear-gradient(
+    135deg,
+    #fff8e7 0%,
+    #fdf5e6 25%,
+    #fff5e1 50%,
+    #fdf5e6 75%,
+    #fff8e7 100%
+  );
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 180, 140, 0.03) 2px,
+      rgba(210, 180, 140, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 180, 140, 0.03) 2px,
+      rgba(210, 180, 140, 0.03) 4px
+    );
+}
+
+.dress-code-content {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.dress-code-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: #8b5a2b;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.dress-code-subtitle {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  color: #8b5a2b;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.dress-code-description {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: #6b4423;
+  margin: 0;
+  max-width: 700px;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.dress-code-colors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.color-swatch {
+  width: 160px;
+  height: 160px;
+  border-radius: 8px;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.color-swatch:hover {
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive para tablets - Dress Code */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .dress-code-section {
+    padding: 70px 20px;
+  }
+
+  .dress-code-content {
+    gap: 35px;
+  }
+
+  .dress-code-title {
+    font-size: clamp(2.2rem, 6.5vw, 4rem);
+  }
+
+  .dress-code-subtitle {
+    font-size: clamp(1.8rem, 4.2vw, 3.2rem);
+  }
+
+  .dress-code-description {
+    font-size: clamp(0.95rem, 2.3vw, 1.35rem);
+  }
+
+  .dress-code-colors {
+    gap: 25px;
+    flex-wrap: wrap;
+  }
+
+  .color-swatch {
+    width: 145px;
+    height: 145px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dress-code-section {
+    padding: 60px 20px;
+  }
+
+  .dress-code-content {
+    gap: 30px;
+  }
+
+  .dress-code-title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+  }
+
+  .dress-code-description {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+  }
+
+  .dress-code-colors {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 400px;
+    flex-wrap: wrap;
+  }
+
+  .color-swatch {
+    width: 100%;
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dress-code-section {
+    padding: 40px 15px;
+  }
+
+  .dress-code-content {
+    gap: 25px;
+  }
+
+  .dress-code-title {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+  }
+
+  .dress-code-subtitle {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    color: #8b5a2b;
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 2px;
+  }
+
+  .dress-code-description {
+    font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+  }
+
+  .dress-code-colors {
+    gap: 15px;
+    max-width: 320px;
+  }
+
+  .color-swatch {
+    height: 120px;
+  }
+}
+
+/* Sección de Confirmación */
+.confirmation-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+.confirmation-content {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.confirmation-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: #8b5a2b;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.confirmation-cards-container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.confirmation-card,
+.song-request-card {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(139, 90, 43, 0.15);
+  border: 2px solid #d4b896;
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.confirmation-text,
+.song-request-text {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: #6b4423;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.song-request-subtext {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+  color: #8b5a2b;
+  margin: -15px 0 0 0;
+  font-weight: 600;
+}
+
+.confirm-button,
+.song-button {
+  background: linear-gradient(135deg, #8b5a2b 0%, #a0522d 100%);
+  color: #ffffff;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 16px rgba(139, 90, 43, 0.3);
+  transition: all 0.3s ease;
+}
+
+.confirm-button:hover,
+.song-button:hover {
+  box-shadow: 0 6px 24px rgba(139, 90, 43, 0.4);
+  transform: translateY(-2px);
+}
+
+.button-icon {
+  font-size: 1.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive para tablets - Confirmation */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .confirmation-section {
+    padding: 70px 20px;
+  }
+
+  .confirmation-content {
+    gap: 35px;
+  }
+
+  .confirmation-title {
+    font-size: clamp(2.2rem, 6.5vw, 4rem);
+  }
+
+  .confirmation-cards-container {
+    gap: 28px;
+  }
+
+  .confirmation-card,
+  .song-request-card {
+    padding: 35px 28px;
+    gap: 22px;
+    max-width: 450px;
+  }
+
+  .confirmation-text,
+  .song-request-text {
+    font-size: clamp(0.98rem, 2.3vw, 1.25rem);
+  }
+
+  .song-request-subtext {
+    font-size: clamp(1.05rem, 2.6vw, 1.4rem);
+  }
+
+  .confirm-button,
+  .song-button {
+    padding: 15px 36px;
+    font-size: clamp(0.98rem, 2.3vw, 1.15rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .confirmation-section {
+    padding: 60px 15px;
+  }
+
+  .confirmation-content {
+    gap: 30px;
+  }
+
+  .confirmation-cards-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .confirmation-card,
+  .song-request-card {
+    padding: 30px 20px;
+    gap: 20px;
+    max-width: 100%;
+  }
+
+  .confirm-button,
+  .song-button {
+    padding: 14px 32px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .confirmation-section {
+    padding: 40px 10px;
+  }
+
+  .confirmation-card,
+  .song-request-card {
+    padding: 25px 15px;
+  }
+
+  .confirm-button,
+  .song-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
+
+/* Modal de Confirmación */
+.confirmation-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.confirmation-modal-content {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 700px;
+  height: 90vh;
+  max-height: 1100px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #8b5a2b;
+  color: #ffffff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(139, 90, 43, 0.3);
+}
+
+.modal-close-button:hover {
+  background: #6b4423;
+  transform: scale(1.1);
+}
+
+.confirmation-modal-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .confirmation-modal-overlay {
+    padding: 10px;
+  }
+
+  .confirmation-modal-content {
+    max-width: 100%;
+    height: 95vh;
+    border-radius: 12px;
+  }
+
+  .modal-close-button {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .confirmation-modal-overlay {
+    padding: 5px;
+  }
+
+  .confirmation-modal-content {
+    height: 98vh;
+    border-radius: 8px;
+  }
+
+  .modal-close-button {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+}
+
+/* Sección de Mesa de Regalos */
+.gift-registry-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.gift-registry-content {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.gift-registry-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: #8b5a2b;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gift-registry-subtitle {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: #6b4423;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.gift-registry-cards-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.gift-registry-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 35px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 280px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.gift-registry-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.gift-card-icon {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  margin-bottom: 15px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.gift-card-title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  font-weight: 600;
+  color: #8b5a2b;
+  margin-bottom: 12px;
+}
+
+.gift-card-text {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  color: #6b4423;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.gift-button {
+  padding: 14px 35px;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: clamp(0.9rem, 1.6vw, 0.95rem);
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.amazon-button {
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+}
+
+.amazon-button:hover {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.paypal-button {
+  background: linear-gradient(135deg, #0070ba 0%, #003087 100%);
+}
+
+.paypal-button:hover {
+  background: linear-gradient(135deg, #003087 0%, #001f5b 100%);
+  box-shadow: 0 6px 20px rgba(0, 112, 186, 0.4);
+}
+
+.gift-button .button-icon {
+  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+}
+
+/* Responsive para tablets - Gift Registry */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .gift-registry-section {
+    padding: 50px 20px;
+  }
+
+  .gift-registry-title {
+    font-size: clamp(2.2rem, 6.5vw, 4rem);
+    margin-bottom: 18px;
+  }
+
+  .gift-registry-subtitle {
+    font-size: clamp(0.98rem, 2.3vw, 1.35rem);
+    margin-bottom: 35px;
+  }
+
+  .gift-registry-cards-container {
+    gap: 35px;
+  }
+
+  .gift-registry-card {
+    max-width: 380px;
+    padding: 35px 30px;
+  }
+
+  .gift-card-icon {
+    font-size: clamp(2.8rem, 5.5vw, 3.3rem);
+    margin-bottom: 13px;
+  }
+
+  .gift-card-title {
+    font-size: clamp(1.4rem, 2.8vw, 1.7rem);
+    margin-bottom: 11px;
+  }
+
+  .gift-card-text {
+    font-size: clamp(0.92rem, 1.7vw, 1.02rem);
+    margin-bottom: 22px;
+  }
+
+  .gift-button {
+    padding: 13px 32px;
+    font-size: clamp(0.88rem, 1.7vw, 0.93rem);
+  }
+
+  .gift-button .button-icon {
+    font-size: clamp(1.05rem, 2.1vw, 1.25rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .gift-registry-section {
+    padding: 40px 15px;
+    min-height: auto;
+  }
+
+  .gift-registry-title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: 15px;
+  }
+
+  .gift-registry-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+
+  .gift-registry-cards-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .gift-registry-card {
+    max-width: 100%;
+    padding: 30px 25px;
+  }
+
+  .gift-card-icon {
+    font-size: clamp(2.5rem, 6vw, 3rem);
+    margin-bottom: 12px;
+  }
+
+  .gift-card-title {
+    font-size: clamp(1.3rem, 4vw, 1.6rem);
+    margin-bottom: 10px;
+  }
+
+  .gift-card-text {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    margin-bottom: 20px;
+  }
+
+  .gift-button {
+    padding: 12px 28px;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .gift-registry-section {
+    padding: 30px 10px;
+    min-height: auto;
+  }
+
+  .gift-registry-title {
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    padding: 0 10px;
+    margin-bottom: 12px;
+  }
+
+  .gift-registry-subtitle {
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+    padding: 0 15px;
+    margin-bottom: 25px;
+  }
+
+  .gift-registry-card {
+    padding: 25px 20px;
+  }
+
+  .gift-card-icon {
+    font-size: clamp(2.2rem, 6vw, 2.8rem);
+    margin-bottom: 10px;
+  }
+
+  .gift-card-title {
+    font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+    margin-bottom: 8px;
+  }
+
+  .gift-card-text {
+    font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+    margin-bottom: 18px;
+    line-height: 1.4;
+  }
+
+  .gift-button {
+    padding: 11px 24px;
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
+  }
+
+  .gift-button .button-icon {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+}

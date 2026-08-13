@@ -1,0 +1,79 @@
+/* Botón de control de música */
+.music-control-button {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8B5A2B 0%, #A0522D 100%);
+  border: none;
+  color: white;
+  cursor: pointer;
+  box-shadow:
+    0 4px 15px rgba(139, 90, 43, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.music-control-button:hover {
+  box-shadow:
+    0 6px 20px rgba(139, 90, 43, 0.5),
+    0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.music-icon {
+  width: 28px;
+  height: 28px;
+  color: white;
+}
+
+/* Responsive para tablets */
+@media (max-width: 1024px) {
+  .music-control-button {
+    bottom: 25px;
+    left: 25px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .music-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .music-control-button {
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .music-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Responsive para móviles pequeños */
+@media (max-width: 480px) {
+  .music-control-button {
+    bottom: 15px;
+    left: 15px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .music-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
