@@ -6,12 +6,12 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #8B5A2B 0%, #A0522D 100%);
+  background: linear-gradient(135deg, #4f4c4c 0%, #333131 100%);
   border: none;
   color: white;
   cursor: pointer;
   box-shadow:
-    0 4px 15px rgba(139, 90, 43, 0.4),
+    0 4px 15px rgba(79, 76, 76, 0.4),
     0 2px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
@@ -22,7 +22,7 @@
 
 .music-control-button:hover {
   box-shadow:
-    0 6px 20px rgba(139, 90, 43, 0.5),
+    0 6px 20px rgba(79, 76, 76, 0.5),
     0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
